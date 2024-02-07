@@ -1,5 +1,10 @@
 name: pro-mvn/plan-mvn
-on:
+on: 
+  push:
+  pull_request:
+    branches: 
+      - master
+  
 #   # The shortest interval you can run scheduled workflows is once every 5 minutes.
 #   period: '180'
 jobs:
