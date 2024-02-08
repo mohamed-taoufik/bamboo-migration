@@ -1,5 +1,10 @@
 name: pro-mvn/plan-mvn
 on:
+ push:
+  branches: master
+ pull_request:
+  branches: master
+  
 #   # The shortest interval you can run scheduled workflows is once every 5 minutes.
 #   period: '180'
 jobs:
@@ -19,4 +24,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v2.12.0
       if: always()
       with:
-        junit_files: "**/target/surefire-reports/*.xml"
+        junit_files: "*.xml"
