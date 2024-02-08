@@ -1,4 +1,7 @@
 name: pro-mvn/plan-mvn
+permissions:
+  checks: write
+  pull-requests: write
 on:
  push:
   branches: master
@@ -19,8 +22,11 @@ jobs:
         java-version: '11'
     - name: Run Maven
       run: mvn package
-    - name: Publish test results
-      uses: EnricoMi/publish-unit-test-result-action@v2.12.0
-      #if: always()
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
       with:
-        junit_files: "**/target/surefire-reports/*.xml"
+        files: |
+         test-results/**/*.xml
+         test-results/**/*.trx
+         test-results/**/*.json
